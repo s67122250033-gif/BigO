@@ -1,3 +1,4 @@
+1. แนวคิดของอัลกอริทึมRecursive Counting: ตรวจสอบทีละอักษร หากเป็นสระเพิ่ม vowels + 1 หากเป็นพยัญชนะเพิ่ม consonants + 1 และส่งผลรวมสะสมผ่าน Argument ของ Recursive MethodIterative Counting: วนลูป $0$ ถึง $n-1$ มีตัวแประนับ vowelCount และ consonantCount ปรับค่าตามเงื่อนไข
 4. ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
 Input: "education"
 
