@@ -1,0 +1,20 @@
+public class Question1 {
+    // 1. Recursive Algorithm
+    public static String reverseRecursive(String s) {
+        if (s == null || s.length() <= 1) {
+            return s; // Base Case
+        }
+        // Recursive Case: Cut first char, reverse rest, append first char at end
+        return reverseRecursive(s.substring(1)) + s.charAt(0);
+    }
+
+    // 2. Iterative Algorithm (Optimized with StringBuilder)
+    public static String reverseIterative(String s) {
+        if (s == null) return null;
+        StringBuilder sb = new StringBuilder(s.length());
+        for (int i = s.length() - 1; i >= 0; i--) {
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
+    }
+}
