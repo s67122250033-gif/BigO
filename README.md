@@ -1,1 +1,9 @@
-# BigO
+ 1.แนวคิดของอัลกอริทึมRecursive Algorithm: ตัดตัวอักษรตัวแรก ($s[0]$) ออก แล้วนำตัวอักษรส่วนที่เหลือ ($s[1...n-1]$) ไปกลับลำดับแบบเวียนเกิด แล้วจึงนำ $s[0]$ ไปต่อท้ายผลลัพธ์Iterative Algorithm: ใช้ลูปอ่านตัวอักษรจากดัชนีสุดท้าย ($n-1$) ย้อนกลับมายังดัชนีแรก ($0$) แล้วนำมาต่อกันใน StringBuilder
+ 4. ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
+Input: "pots&pans"
+
+Output (both methods): "snap&stop"
+5. การวิเคราะห์ Time ComplexityRecursive: $\mathcal{O}(n^2)$ — เรียก Function $n$ ครั้ง และในแต่ละครั้งมีการตัด String (substring) ซึ่งใช้เวลา $\mathcal{O}(n)$ รวมกับการต่อ String ด้วย + ที่ต้อง copy ข้อมูลขนาด $n$ ทำให้เกิด $n + (n-1) + ... + 1 = \mathcal{O}(n^2)$Iterative: $\mathcal{O}(n)$ — วนลูป $n$ รอบ แต่ละรอบทำ operations append ใน StringBuilder ซึ่งใช้เวลาเฉลี่ย $\mathcal{O}(1)$
+6. การวิเคราะห์ Space ComplexityRecursive: $\mathcal{O}(n^2)$ ถึง $\mathcal{O}(n)$ — Stack Depth สูงสุด $n$ ชั้น ($\mathcal{O}(n)$) และในแต่ละชั้นมีการสร้างวัตถุ String ใหม่ขนาดลดลงทีละ 1 รวมกันใช้พื้นที่ $\mathcal{O}(n^2)$Iterative: $\mathcal{O}(n)$ — ใช้พื้นที่ใน Call Stack เป็น $\mathcal{O}(1)$ และใช้พื้นที่สร้าง StringBuilder สำหรับผลลัพธ์ขนาด $n$
+7. การเปรียบเทียบข้อดีและข้อจำกัดประเด็นRecursive AlgorithmIterative Algorithmข้อดีโค้ดสั้น เข้าใจแนวคิดเชิงคณิตศาสตร์ได้ง่ายทำงานเร็ว ประหยัดหน่วยความจำข้อจำกัดกินพื้นที่ Stack สูง เสี่ยง StackOverflowError เมื่อ $N \ge 10,000$ต้องบริหารจัดการ Pointer/Loop Index เอง
+8. สรุปอัลกอริทึมที่เหมาะสมการใช้งานจริง: Iterative Algorithm เหมาะสมกว่าในทุกกรณีเนื่องจากป้องกัน Stack Overflow และมีประสิทธิภาพเชิงเวลาสูงกว่า ($\mathcal{O}(n)$ vs $\mathcal{O}(n^2)$)ผลกระทบของการต่อ String ด้วย + vs StringBuilder: การใช้ + ใน String ของ Java จะสร้าง StringBuilder ใหม่ทุกครั้งในลูป/Recursion ส่งผลให้เกิด Garbage Collection หนักมาก การใช้ StringBuilder โดยตรงประหยัด Memory และ CPU อย่างมาก
