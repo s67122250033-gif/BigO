@@ -1,0 +1,36 @@
+public class Question2 {
+    // Helper Method สำหรับกรองขยะและตัวพิมพ์
+    private static String preprocess(String s) {
+        if (s == null) return "";
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                sb.append(Character.toLowerCase(c));
+            }
+        }
+        return sb.toString();
+    }
+
+    // 1. Reverse and Compare
+    public static boolean isPalindromeByReverse(String s) {
+        String clean = preprocess(s);
+        String rev = new StringBuilder(clean).reverse().toString();
+        return clean.equals(rev);
+    }
+
+    // 2. Recursive Two-Pointer
+    public static boolean isPalindromeRecursive(String s, int left, int right) {
+        // Base Case 1: ตรวจสอบครบชี้ชนกันแล้ว
+        if (left >= right) return true;
+        // Base Case 2: เจอจุดที่ไม่เหมือนกัน หยุดทันที (Early Exit)
+        if (s.charAt(left) != s.charAt(right)) return false;
+        // Recursive Case
+        return isPalindromeRecursive(s, left + 1, right - 1);
+    }
+
+    // Wrapper function สำหรับ Recursive
+    public static boolean isPalindromeRecursiveWrapper(String s) {
+        String clean = preprocess(s);
+        return isPalindromeRecursive(clean, 0, clean.length() - 1);
+    }
+}
